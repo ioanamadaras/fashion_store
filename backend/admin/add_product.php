@@ -4,37 +4,51 @@ require '../helpers/admin_check.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // 1. Inserăm produsul în tabela products
-    $stmt = $pdo->prepare("
-        INSERT INTO products (name, code, image, price, descriere, categorie, gender)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    ");
+    try {
 
-    $stmt->execute([
-        $_POST["name"],
-        $_POST["code"],
-        $_POST["image"],
-        $_POST["price"],
-        $_POST["descriere"],
-        $_POST["categorie"],
-        $_POST["gender"]
-    ]);
+        // 1. Inserăm produsul în tabela products
+        $stmt = $pdo->prepare("
+            INSERT INTO products (name, code, image, price, descriere, categorie, gender)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ");
 
-    // 2. Luăm ID-ul produsului proaspăt adăugat
-    $product_id = $pdo->lastInsertId();
+        $stmt->execute([
+            $_POST["name"],
+            $_POST["code"],
+            $_POST["image"],
+            $_POST["price"],
+            $_POST["descriere"],
+            $_POST["categorie"],
+            $_POST["gender"]
+        ]);
 
-    // 3. Dacă adminul a selectat mărimi → le inserăm în product_sizes
-    if (!empty($_POST['sizes'])) {
+        // 2. ID produs
+        $product_id = $pdo->lastInsertId();
 
-        foreach ($_POST['sizes'] as $size) {
+        // 3. Inserăm mărimile dacă există
+        if (!empty($_POST['sizes'])) {
             $stmt2 = $pdo->prepare("INSERT INTO product_sizes (product_id, size) VALUES (?, ?)");
-            $stmt2->execute([$product_id, $size]);
+            foreach ($_POST['sizes'] as $size) {
+                $stmt2->execute([$product_id, $size]);
+            }
         }
-    }
 
-    header("Location: ../../public/admin/list.php");
-    exit;
+        header("Location: ../../public/admin/list.php");
+        exit;
+
+    } catch (PDOException $e) {
+
+        // Dacă avem cod duplicat → eroare clară pentru admin
+        if ($e->getCode() == 23000) {
+            die("<h2 style='color:red'>⚠ Codul <b>{$_POST["code"]}</b> există deja! Folosește alt cod.</h2>
+                 <a href='../../public/admin/add.php'>Înapoi</a>");
+        }
+
+        // Alte erori PDO
+        die("Eroare DB: " . $e->getMessage());
+    }
 }
 ?>
+
 
 
