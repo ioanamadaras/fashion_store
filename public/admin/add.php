@@ -23,9 +23,6 @@
         <option value="Barbati">Bărbați</option>
     </select>
     <br><br>
-    Descriere:
-    <textarea name="descriere" rows="4" cols="40"></textarea>
-    <br><br>
     <label>Mărimi disponibile:</label><br>
     <input type="checkbox" name="sizes[]" value="XS"> XS<br>
     <input type="checkbox" name="sizes[]" value="S"> S<br>
