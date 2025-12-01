@@ -32,7 +32,9 @@ $empty = empty($items);
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
     <meta charset="UTF-8">
     <title>Coșul tău</title>
 
@@ -71,19 +73,20 @@ $empty = empty($items);
 </head>
 <body>
 
-<h1>Coșul tău de cumpărături</h1>
+<h1 class="cart-title">Coșul tău de cumpărături</h1>
 
-<a href="index.php">← Înapoi la magazin</a>
-<br><br>
+<div class="cart-container">
+
+<a href="index.php" class="back-link">← Înapoi la magazin</a>
 
 <?php if ($empty): ?>
 
-    <h3>Coșul este gol!</h3>
+    <h3 class="empty-cart">Coșul este gol!</h3>
 
 <?php else: ?>
 
     <form action="../backend/cart/update.php" method="POST">
-        <table>
+        <table class="cart-table">
             <tr>
                 <th>Imagine</th>
                 <th>Nume</th>
@@ -93,14 +96,12 @@ $empty = empty($items);
                 <th>Total</th>
                 <th>Șterge</th>
             </tr>
-
             <?php
             $grand_total = 0;
-
             foreach ($items as $row):
                 $line_total = $row["price"] * $row["quantity"];
                 $grand_total += $line_total;
-                ?>
+            ?>
                 <tr>
                     <td><img src="assets/images/<?php echo $row['image']; ?>"></td>
                     <td><?php echo $row['name']; ?></td>
@@ -114,28 +115,24 @@ $empty = empty($items);
                     </td>
                     <td><?php echo $line_total; ?> lei</td>
                     <td>
-                        <a href="../backend/cart/remove.php?id=<?php echo $row['cart_id']; ?>"
-                           style="color:red;">X</a>
+                        <a class="delete-link"
+                           href="../backend/cart/remove.php?id=<?php echo $row['cart_id']; ?>">X</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
-
         </table>
-
-        <br>
-        <button type="submit">Actualizează coșul</button>
+        <div class="cart-actions">
+            <button type="submit" class="update-btn">Actualizează coșul</button>
+            <a href="checkout.php"><button type="button" class="checkout-btn">Finalizează comanda</button></a>
+        </div>
     </form>
-
-    <p class="total">
-        <strong>Total general: <?php echo $grand_total; ?> lei</strong>
+    <p class="grand-total">
+        Total general: <?php echo $grand_total; ?> lei
     </p>
 
-    <br>
-    <a href="checkout.php">
-        <button>Finalizează comanda</button>
-    </a>
-
 <?php endif; ?>
+
+</div>
 
 </body>
 </html>

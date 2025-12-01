@@ -39,7 +39,9 @@ foreach ($cart_items as $item) {
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
     <meta charset="UTF-8">
     <title>Checkout - Fashion Store</title>
 
@@ -82,49 +84,48 @@ foreach ($cart_items as $item) {
 </head>
 <body>
 
-<div class="container">
+<div class="checkout-container">
 
-    <h2>Finalizare comandă</h2>
+    <h2 class="checkout-title">Finalizare comandă</h2>
 
-    <h3>Date personale</h3>
+    <div class="checkout-card">
+        <h3 class="checkout-subtitle">Date personale</h3>
+        
+        <form action="../backend/stripe/create_checkout.php" method="POST">
 
-    <form action="../backend/stripe/create_checkout.php" method="POST">
+            <label>Nume complet:</label>
+            <input type="text" name="fullname" required>
 
-        <label>Nume complet:</label>
-        <input type="text" name="fullname" required>
+            <label>Email:</label>
+            <input type="email" name="email" required>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
+            <label>Telefon:</label>
+            <input type="text" name="phone" required>
 
-        <label>Telefon:</label>
-        <input type="text" name="phone" required>
+            <h3 class="checkout-subtitle">Adresă livrare</h3>
 
-        <h3>Adresă livrare</h3>
+            <label>Țară:</label>
+            <input type="text" name="country" required>
 
-        <label>Țară:</label>
-        <input type="text" name="country" required>
+            <label>Oraș:</label>
+            <input type="text" name="city" required>
 
-        <label>Oraș:</label>
-        <input type="text" name="city" required>
+            <label>Stradă:</label>
+            <input type="text" name="street" required>
 
-        <label>Stradă:</label>
-        <input type="text" name="street" required>
+            <label>Cod poștal:</label>
+            <input type="text" name="postal" required>
 
-        <label>Cod poștal:</label>
-        <input type="text" name="postal" required>
+            <div class="checkout-total">
+                <strong>Total de plată: <?php echo $grand_total; ?> lei</strong>
+            </div>
 
-        <div class="totals">
-            <strong>Total de plată: <?php echo $grand_total; ?> lei</strong>
-        </div>
-
-        <input type="hidden" name="amount" value="<?php echo $grand_total; ?>">
-
-        <button type="submit">Plătește cu cardul</button>
-
-
-    </form>
-
+            <input type="hidden" name="amount" value="<?php echo $grand_total; ?>">
+            <button type="submit" class="checkout-btn">Plătește cu cardul</button>
+        </form>
+    </div>
 </div>
+
 
 </body>
 </html>

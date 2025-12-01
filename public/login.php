@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Login - Fashion Store</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>Autentificare - Fashion Store</title>
 </head>
 <body>
-<h1>Autentificare</h1>
+<h1 class="page-title">Autentificare</h1>
 
-<form action="../backend/auth/login.php" method="POST">
-    <label>
-        Username:<br>
+<div class="login-container">
+    <form class="login-form" action="../backend/auth/login.php" method="POST">
+
+        <label>Username:</label>
         <input type="text" name="username" required>
-    </label>
-    <br><br>
 
-    <label>
-        Parola:<br>
+        <label>Parola:</label>
         <input type="password" name="password" required>
-    </label>
-    <br><br>
 
-    <button type="submit">Login</button>
-</form>
+        <button type="submit">Login</button>
+    </form>
+</div>
 
-<p>Nu ai cont? <a href="register.php">Înregistrează-te aici</a></p>
+<p class="login-footer">
+    Nu ai cont? <a href="register.php">Înregistrează-te aici</a>
+</p>
+
 </body>
 </html>

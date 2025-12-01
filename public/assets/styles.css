@@ -1,230 +1,827 @@
-/* ================================
-   GLOBAL RESET & BASE STYLE
-================================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
-  background: #f3f3f3;
-  color: #222;
-  line-height: 1.6;
+  font-family: "Poppins", sans-serif;
 }
+
+/* cart.php */
 
 /* ================================
-   NAVBAR
+   CART PAGE CONTAINER
 ================================= */
-nav {
-  width: 100%;
-  background: #000;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.cart-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
 }
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
+.cart-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
   font-weight: bold;
 }
 
-nav a:hover {
-  color: #ff4081;
+/* ================================
+   EMPTY CART
+================================= */
+.empty-cart {
+  text-align: center;
+  font-size: 22px;
+  margin-top: 40px;
 }
 
 /* ================================
-   PAGE TITLES
+   CART TABLE (MODERNIZED)
 ================================= */
-.page-title {
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cart-table th {
+  background: #111;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.cart-table td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-table img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* QUANTITY INPUT */
+.cart-table input[type="number"] {
+  width: 60px;
+  padding: 6px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+/* DELETE LINK */
+.delete-link {
+  color: #ff2b2b;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.delete-link:hover {
+  color: #d60000;
+}
+
+/* ================================
+   UPDATE BUTTON + CHECKOUT BUTTON
+================================= */
+.cart-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-btn,
+.checkout-btn {
+  background: #a78bfa;
+  color: white;
+  padding: 12px 22px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.update-btn:hover,
+.checkout-btn:hover {
+  background: #e73372;
+}
+
+/* ================================
+   GRAND TOTAL
+================================= */
+.grand-total {
+  text-align: right;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+/* ================================
+   BACK LINK
+================================= */
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #111;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  color: #a78bfa;
+}
+
+/* ================================
+   RESPONSIVE CART
+================================= */
+@media (max-width: 768px) {
+  .cart-table th,
+  .cart-table td {
+    padding: 10px;
+  }
+
+  .cart-table img {
+    width: 60px;
+    height: 80px;
+  }
+
+  .update-btn,
+  .checkout-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .cart-actions {
+    flex-direction: column;
+  }
+
+  .grand-total {
+    text-align: center;
+  }
+}
+
+/* checkout.php */
+/* ================================
+   CHECKOUT PAGE LAYOUT
+================================= */
+.checkout-container {
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.checkout-title {
   text-align: center;
   font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.checkout-subtitle {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ================================
+   CHECKOUT FORM CARD
+================================= */
+.checkout-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM INPUTS */
+.checkout-card input,
+.checkout-card select,
+.checkout-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fafafa;
+  transition: border-color 0.3s ease;
+}
+
+.checkout-card input:focus,
+.checkout-card select:focus,
+.checkout-card textarea:focus {
+  border-color: #a78bfa;
+  background: white;
+}
+
+/* ================================
+   TOTAL SECTION
+================================= */
+.checkout-total {
+  background: #fff7fc;
+  border-left: 5px solid #a78bfa;
+  padding: 15px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+}
+
+/* ================================
+   PAY BUTTON
+================================= */
+.checkout-btn {
+  background: #a78bfa;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 18px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background: #e73372;
+}
+
+/* ================================
+   RESPONSIVE
+================================= */
+@media (max-width: 600px) {
+  .checkout-container {
+    width: 95%;
+  }
+
+  .checkout-title {
+    font-size: 26px;
+  }
+
+  .checkout-card {
+    padding: 20px;
+  }
+}
+/* index,php */
+/* ======================================
+   INDEX.PHP – HOME PAGE
+====================================== */
+
+/* Pagina - titlu principal */
+.home-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: #111;
   margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+/* User info (logged in state) */
+.user-box {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.user-box strong {
+  color: #a78bfa;
+}
+
+/* User links (logout, cart, admin) */
+.user-links {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.user-links a {
+  background: #111;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin: 0 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.user-links a:hover {
+  background: #a78bfa;
+}
+
+/* Guest state */
+.guest-box {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.guest-box a {
+  color: #a78bfa;
+  font-weight: bold;
+}
+
+.guest-box a:hover {
+  text-decoration: underline;
+}
+
+/* Separator HR */
+.separator {
+  width: 70%;
+  margin: 30px auto;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+/* Secțiune – titlu produse */
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 30px;
   margin-bottom: 20px;
   font-weight: bold;
   color: #222;
 }
 
+/* ======================================
+   GRID DE PRODUSE
+====================================== */
+
+.product-grid {
+  width: 90%;
+  max-width: 1300px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+/* Card de produs */
+.product-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease-in-out;
+  border: #000 1px solid;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagine produs */
+.product-card img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info produs */
+.product-info {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Nume produs */
+.product-info a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: 0.3s ease;
+}
+
+.product-info a:hover {
+  color: #a78bfa;
+}
+
+/* Preț */
+.product-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #a78bfa;
+  margin-bottom: 8px;
+}
+
+/* Categorie + gen */
+.product-category {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+====================================== */
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 32px;
+  }
+  .product-card img {
+    height: 280px;
+  }
+}
+
+/* login.php */
 /* ================================
-   CENTER PAGE CONTAINER
+   LOGIN PAGE STYLING
 ================================= */
-.center-box {
+
+/* Centered container (reuse from register) */
+.login-container {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
 }
 
-/* ================================
-   FORM STYLING
-================================= */
-form {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
+/* Form Card */
+.login-form {
+  background: white;
+  padding: 35px;
+  border-radius: 14px;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.4s ease;
 }
 
-form label {
+/* Labels */
+.login-form label {
   font-weight: bold;
-  margin-bottom: 6px;
   display: block;
+  margin-bottom: 6px;
   color: #333;
 }
 
-form input {
+/* Inputs */
+.login-form input {
   width: 100%;
   padding: 12px;
   margin-bottom: 18px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 15px;
+  background: #fafafa;
+  transition: 0.2s ease;
 }
 
-/* BUTTONS */
-button,
-.btn {
-  background: #ff4081;
+.login-form input:focus {
+  border-color: #a78bfa;
+  background: white;
+  box-shadow: 0 0 4px rgba(255, 64, 129, 0.25);
+}
+
+/* Login button */
+.login-form button {
+  background: #a78bfa;
   color: white;
-  padding: 12px 18px;
-  border: none;
-  cursor: pointer;
+  padding: 12px;
   width: 100%;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: background 0.3s ease;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 8px;
 }
 
-button:hover,
-.btn:hover {
+.login-form button:hover {
   background: #e73372;
 }
 
-/* ================================
-   FORM FOOTER TEXT
-================================= */
-.form-footer {
-  margin-top: 20px;
+/* Register link under form */
+.login-footer {
   text-align: center;
+  margin-top: 18px;
   font-size: 15px;
 }
 
-.form-footer a {
-  color: #ff4081;
+.login-footer a {
+  color: #a78bfa;
   font-weight: bold;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Simple fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* product.php */
+
+/* ======================================
+   PRODUCT PAGE LAYOUT
+====================================== */
+.product-page {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  gap: 50px;
+}
+
+/* Product Image */
+.product-image {
+  width: 450px;
+  height: 550px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Sidebar with details */
+.product-details {
+  flex: 1;
+}
+
+/* Title */
+.product-details h2 {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* Price */
+.product-price-big {
+  font-size: 26px;
+  font-weight: bold;
+  color: #a78bfa;
+  margin: 15px 0;
+}
+
+/* Small info rows */
+.product-meta {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+.product-meta strong {
+  color: #111;
+}
+
+/* Description */
+.product-description {
+  margin-top: 15px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Select size */
+.size-label {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.size-select {
+  margin-top: 8px;
+  padding: 10px;
+  width: 180px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  background: #fafafa;
+  transition: 0.2s;
+}
+
+.size-select:focus {
+  border-color: #a78bfa;
+  background: white;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  margin-top: 25px;
+  background: #a78bfa;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.add-to-cart-btn:hover {
+  background: #e73372;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: #111;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  color: #a78bfa;
+}
+
+/* ===============================
+   RESPONSIVE PRODUCT PAGE
+================================ */
+@media (max-width: 900px) {
+  .product-page {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-image {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .product-details {
+    width: 100%;
+  }
+
+  .size-select {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* register.php */
+/* =======================================
+   FORM – LOGIN & REGISTER
+======================================= */
+
+/* Title */
+.page-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Centered white box */
+.center-box {
+  width: 420px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form + labels */
+.center-box form label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  color: #444;
+}
+
+/* Input fields */
+.center-box input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.center-box input:focus {
+  border-color: #a78bfa;
+  outline: none;
+}
+
+/* Submit button */
+.center-box button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background: #a78bfa;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.center-box button:hover {
+  background: #e73372;
+}
+
+/* Footer link */
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+}
+
+.form-footer a {
+  color: #a78bfa;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .form-footer a:hover {
   text-decoration: underline;
 }
 
-/* ================================
-   PRODUCT GRID
-================================= */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
-  width: 90%;
-  margin: auto;
-}
+/* succes.php */
+/* =======================================
+   ORDER SUCCESS PAGE
+======================================= */
 
-.product-card {
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+.success-container {
+  max-width: 520px;
+  margin: 70px auto;
+  background: #fff;
+  padding: 35px;
+  border-radius: 16px;
   text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.5s ease;
 }
 
-.product-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.product-card h3 {
-  margin-top: 12px;
-}
-
-.product-card p {
-  color: #666;
-}
-
-/* ================================
-   CART ITEMS
-================================= */
-.cart-item {
-  background: white;
-  padding: 20px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
+/* Checkmark Icon */
+.success-icon {
+  font-size: 60px;
+  color: #4caf50;
   margin-bottom: 15px;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
 
-.cart-item img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 6px;
+.success-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 15px;
 }
 
-.cart-item-info {
-  flex: 1;
-}
-
-/* ================================
-   CHECKOUT SUMMARY
-================================= */
-.checkout-summary {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 6px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin: auto;
-}
-
-/* ================================
-   SUCCESS MESSAGE
-================================= */
-.success-box {
-  background: #d4edda;
-  padding: 20px;
-  border-left: 6px solid #28a745;
-  border-radius: 6px;
-  color: #155724;
-  max-width: 600px;
-  margin: 40px auto;
-  text-align: center;
+.success-details {
   font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
 }
 
-/* ================================
-   FOOTER
-================================= */
-footer {
-  background: #000;
+.success-details strong {
+  color: #000;
+}
+
+/* Back button */
+.success-back {
+  display: inline-block;
+  margin-top: 20px;
+  background: #a78bfa;
   color: white;
-  text-align: center;
-  padding: 25px;
-  margin-top: 50px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 17px;
+  text-decoration: none;
+  transition: 0.2s;
 }
 
-footer a {
-  color: #ff4081;
+.success-back:hover {
+  background: #e73372;
 }
 
-footer a:hover {
-  text-decoration: underline;
+/* Small fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

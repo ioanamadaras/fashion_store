@@ -77,18 +77,25 @@ $pdo->prepare("DELETE FROM cart WHERE user_id=?")->execute([$user_id]);
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
     <meta charset="UTF-8">
     <title>Comandă finalizată</title>
 </head>
 <body>
 
-<h1>Mulțumim pentru comandă!</h1>
-<p>Total plătit: <strong><?php echo $total; ?> lei</strong></p>
-<p>ID comandă: <strong><?php echo $order_id; ?></strong></p>
+<div class="success-container">
+    <div class="success-icon">✔</div>
+    <h1 class="success-title">Mulțumim pentru comandă!</h1>
 
-<a href="index.php">Înapoi la magazin</a>
+    <p class="success-details">
+        Total plătit: <strong><?php echo $total; ?> lei</strong><br>
+        ID comandă: <strong><?php echo $order_id; ?></strong>
+    </p>
 
+    <a class="success-back" href="index.php">Înapoi la magazin</a>
+</div>
 </body>
 </html>
 
