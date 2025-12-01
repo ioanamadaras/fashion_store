@@ -38,38 +38,6 @@ $empty = empty($items);
     <meta charset="UTF-8">
     <title>Coșul tău</title>
 
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-        }
-        table, td, th {
-            border: 1px solid #aaa;
-        }
-        td, th {
-            padding: 10px;
-            text-align: center;
-        }
-        img {
-            width: 80px;
-            height: 100px;
-            object-fit: cover;
-        }
-        .total {
-            font-size: 20px;
-            margin-top: 20px;
-        }
-        button {
-            padding: 8px 15px;
-            background: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        a {
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
 

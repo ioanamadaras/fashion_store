@@ -9,7 +9,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// 1. Preluăm produsul din BD
+// 1. Preluăm produsul
 $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
 $stmt->execute([$id]);
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -18,7 +18,7 @@ if (!$product) {
     die("Produsul nu există!");
 }
 
-// 2. Preluăm mărimile disponibile pentru produs din product_sizes
+// 2. Preluăm mărimile
 $stmt = $pdo->prepare("SELECT size FROM product_sizes WHERE product_id = ?");
 $stmt->execute([$id]);
 $current_sizes = $stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -28,78 +28,62 @@ $current_sizes = $stmt->fetchAll(PDO::FETCH_COLUMN);
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/styles.css">
     <title>Editare produs</title>
 </head>
 <body>
 
-<h1>Editare produs</h1>
+<h1 class="home-title">Editare Produs</h1>
 
-<form action="../../backend/admin/edit_product.php" method="POST">
-    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+<div class="admin-form-container">
 
-    Nume:<br>
-    <input type="text" name="name" value="<?php echo $product['name']; ?>" required><br><br>
+    <form class="admin-form-card" action="../../backend/admin/edit_product.php" method="POST">
+        <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
 
-    Cod:<br>
-    <input type="text" name="code" value="<?php echo $product['code']; ?>" required><br><br>
+        <label>Nume:</label>
+        <input type="text" name="name" value="<?php echo $product['name']; ?>" required>
 
-    Imagine (nume fișier):<br>
-    <input type="text" name="image" value="<?php echo $product['image']; ?>"><br><br>
+        <label>Cod produs:</label>
+        <input type="text" name="code" value="<?php echo $product['code']; ?>" required>
 
-    Preț:<br>
-    <input type="number" step="0.01" min="1" name="price" value="<?php echo $product['price']; ?>" required><br><br>
+        <label>Imagine (ex: z001.jpg):</label>
+        <input type="text" name="image" value="<?php echo $product['image']; ?>">
 
-    Descriere:<br>
-    <textarea name="descriere"><?php echo $product['descriere']; ?></textarea><br><br>
+        <label>Preț:</label>
+        <input type="number" step="0.01" min="1" name="price" value="<?php echo $product['price']; ?>" required>
 
-    Categorie:<br>
-    <input type="text" name="categorie" value="<?php echo $product['categorie']; ?>" required><br><br>
+        <label>Descriere:</label>
+        <textarea name="descriere" rows="4"><?php echo $product['descriere']; ?></textarea>
 
-    Gen:<br>
-    <select name="gender">
-        <option value="Femei"   <?php if($product['gender']=="Femei") echo "selected"; ?>>Femei</option>
-        <option value="Barbati" <?php if($product['gender']=="Barbati") echo "selected"; ?>>Bărbați</option>
-    </select>
-    <br><br>
+        <label>Categorie:</label>
+        <input type="text" name="categorie" value="<?php echo $product['categorie']; ?>" required>
 
-    <!-- MĂRIMI MULTIPLE -->
-    <h3>Mărimi disponibile:</h3>
-    <label>
-        <input type="checkbox" name="sizes[]" value="XS"
-                <?php if(in_array("XS", $current_sizes)) echo "checked"; ?>>
-        XS
-    </label><br>
+        <label>Gen:</label>
+        <select name="gender">
+            <option value="Femei"   <?php if($product['gender']=="Femei") echo "selected"; ?>>Femei</option>
+            <option value="Barbati" <?php if($product['gender']=="Barbati") echo "selected"; ?>>Bărbați</option>
+        </select>
 
-    <label>
-        <input type="checkbox" name="sizes[]" value="S"
-                <?php if(in_array("S", $current_sizes)) echo "checked"; ?>>
-        S
-    </label><br>
+        <label class="sizes-title">Mărimi disponibile:</label>
 
-    <label>
-        <input type="checkbox" name="sizes[]" value="M"
-                <?php if(in_array("M", $current_sizes)) echo "checked"; ?>>
-        M
-    </label><br>
+        <div class="sizes-box">
+            <?php
+            $all_sizes = ["XS","S","M","L","XL"];
+            foreach ($all_sizes as $size):
+            ?>
+                <label>
+                    <input type="checkbox" name="sizes[]" value="<?php echo $size; ?>"
+                        <?php if(in_array($size, $current_sizes)) echo "checked"; ?>>
+                    <?php echo $size; ?>
+                </label>
+            <?php endforeach; ?>
+        </div>
 
-    <label>
-        <input type="checkbox" name="sizes[]" value="L"
-                <?php if(in_array("L", $current_sizes)) echo "checked"; ?>>
-        L
-    </label><br>
+        <button type="submit" class="admin-submit-btn">Salvează modificările</button>
+    </form>
 
-    <label>
-        <input type="checkbox" name="sizes[]" value="XL"
-                <?php if(in_array("XL", $current_sizes)) echo "checked"; ?>>
-        XL
-    </label><br><br>
-
-    <button type="submit">Salvează modificările</button>
-</form>
-
-<p><a href="list.php">Înapoi la listă</a></p>
+    <a class="back-link admin-back" href="list.php">← Înapoi la listă</a>
+</div>
 
 </body>
 </html>
-
-

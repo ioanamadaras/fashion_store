@@ -23,7 +23,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php if (isset($_SESSION["user_id"])): ?>
 
     <div class="user-box">
-        Ești conectat ca: 
+        Ești conectată ca: 
         <strong><?php echo $_SESSION["username"]; ?></strong>
     </div>
 

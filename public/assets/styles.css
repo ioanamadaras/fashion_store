@@ -104,7 +104,7 @@ body {
 
 .update-btn:hover,
 .checkout-btn:hover {
-  background: #e73372;
+  background: #8e68ff;
 }
 
 /* ================================
@@ -497,7 +497,7 @@ body {
 }
 
 .login-form button:hover {
-  background: #e73372;
+  background: #8e68ff;
 }
 
 /* Register link under form */
@@ -736,7 +736,7 @@ body {
 }
 
 .center-box button:hover {
-  background: #e73372;
+  background: #8747e5;
 }
 
 /* Footer link */
@@ -811,7 +811,7 @@ body {
 }
 
 .success-back:hover {
-  background: #e73372;
+  background: #8747e5;
 }
 
 /* Small fade animation */
@@ -825,3 +825,300 @@ body {
     transform: translateY(0);
   }
 }
+
+/* ADMIN */
+
+/* ================================
+   ADMIN DASHBOARD
+================================= */
+
+.admin-actions {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.admin-btn {
+  display: inline-block;
+  background: #9b59ff;
+  padding: 12px 20px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 0 10px;
+  transition: 0.25s ease;
+}
+
+.admin-btn:hover {
+  background: #8747e5;
+}
+
+.admin-btn.secondary {
+  background: #222;
+}
+
+.admin-btn.secondary:hover {
+  background: #555;
+}
+
+/* ================================
+   ADMIN GRID CARDS
+================================= */
+
+.admin-grid {
+  width: 90%;
+  max-width: 1100px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+}
+
+.admin-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.admin-card p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.admin-small-btn {
+  display: inline-block;
+  background: #9b59ff;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.25s ease;
+}
+
+.admin-small-btn:hover {
+  background: #8747e5;
+}
+
+.admin-small-btn.disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* list.php */
+
+/* ================================
+   ADMIN PRODUCT LIST
+================================= */
+
+.admin-table-container {
+  width: 95%;
+  max-width: 1300px;
+  margin: 30px auto 70px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.admin-table th {
+  background: #111;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.admin-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.admin-table img {
+  width: 60px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.small-text {
+  max-width: 250px;
+  text-align: left;
+  font-size: 13px;
+  color: #444;
+}
+
+/* Action buttons inside table */
+.tbl-btn {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.tbl-btn.edit {
+  background: #9b59ff;
+}
+
+.tbl-btn.edit:hover {
+  background: #8747e5;
+}
+
+.tbl-btn.delete {
+  background: #ff4747;
+}
+
+.tbl-btn.delete:hover {
+  background: #d63a3a;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .admin-table {
+    font-size: 13px;
+  }
+
+  .admin-table img {
+    width: 45px;
+    height: 55px;
+  }
+
+  .small-text {
+    max-width: 150px;
+  }
+}
+
+/* add.php */
+
+/* ================================
+   ADMIN – ADD PRODUCT FORM
+================================= */
+
+.admin-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.admin-form-card {
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  text-align: left;
+}
+
+.admin-form-card label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+  font-size: 15px;
+}
+
+.admin-form-card input,
+.admin-form-card select,
+.admin-form-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.admin-form-card input:focus,
+.admin-form-card select:focus,
+.admin-form-card textarea:focus {
+  border-color: #9b59ff;
+  background: white;
+  box-shadow: 0 0 4px rgba(155, 89, 255, 0.25);
+}
+
+.sizes-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.sizes-box {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.sizes-box label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #222;
+}
+
+/* CUSTOM CHECKBOX */
+.sizes-box input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #9b59ff; /* MOVUL TĂU */
+  cursor: pointer;
+}
+
+.admin-submit-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  background: #9b59ff;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-submit-btn:hover {
+  background: #8747e5;
+}
+
+/* Back link */
+.admin-back {
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 16px;
+  color: #9b59ff !important;
+}
+
+.admin-back:hover {
+  color: #7d3ce9 !important;
+}
+
+/* END ADMIN */
