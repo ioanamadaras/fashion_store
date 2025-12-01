@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title>Înregistrare - Fashion Store</title>
 </head>
 <body>
-<h1>Înregistrare utilizator</h1>
 
-<form action="../backend/auth/register.php" method="POST">
-    <label>
-        Username:<br>
+<h1 class="page-title">Înregistrare utilizator</h1>
+
+<div class="center-box">
+    <form action="../backend/auth/register.php" method="POST">
+
+        <label>Username:</label>
         <input type="text" name="username" required>
-    </label>
-    <br><br>
 
-    <label>
-        Email:<br>
+        <label>Email:</label>
         <input type="email" name="email" required>
-    </label>
-    <br><br>
 
-    <label>
-        Parola:<br>
+        <label>Parola:</label>
         <input type="password" name="password" required>
-    </label>
-    <br><br>
 
-    <button type="submit">Creează cont</button>
-</form>
+        <button type="submit">Creează cont</button>
+    </form>
 
-<p>Ai deja cont? <a href="login.php">Mergi la login</a></p>
+    <p class="form-footer">
+        Ai deja cont?  
+        <a href="login.php">Mergi la login</a>
+    </p>
+</div>
 </body>
 </html>

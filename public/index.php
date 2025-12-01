@@ -10,6 +10,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title>Fashion Store - Acasă</title>
 

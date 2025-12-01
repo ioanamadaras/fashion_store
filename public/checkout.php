@@ -39,6 +39,7 @@ foreach ($cart_items as $item) {
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title>Checkout - Fashion Store</title>
 

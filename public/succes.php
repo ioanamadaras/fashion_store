@@ -77,6 +77,7 @@ $pdo->prepare("DELETE FROM cart WHERE user_id=?")->execute([$user_id]);
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title>Comandă finalizată</title>
 </head>
