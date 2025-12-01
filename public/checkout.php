@@ -45,42 +45,6 @@ foreach ($cart_items as $item) {
     <meta charset="UTF-8">
     <title>Checkout - Fashion Store</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background: black;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            opacity: 0.85;
-        }
-
-        .totals {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
 

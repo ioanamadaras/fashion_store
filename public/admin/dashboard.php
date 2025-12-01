@@ -12,24 +12,22 @@
 <h1 class="home-title">Panou Administrativ</h1>
 
 <div class="user-box">
-    Ești conectat(ă) ca: 
+    Ești conectată ca: 
     <strong><?php echo $_SESSION["username"]; ?></strong>
 </div>
 
 <div class="admin-actions">
 
-    <a class="admin-btn" href="list.php">
+    <!-- <a class="admin-btn" href="list.php">
         Gestionează produse
-    </a>
+    </a> -->
 
-    <a class="admin-btn" href="../../backend/auth/logout.php" 
+    <a style="background-color: black" class="admin-btn" href="../../backend/auth/logout.php" 
        onclick="return confirm('Sigur vrei să te deloghezi?');">
         Logout
     </a>
 
-    <a class="admin-btn secondary" href="../../public/index.php">
-        Înapoi la magazin
-    </a>
+    
 
 </div>
 <hr class="separator">
