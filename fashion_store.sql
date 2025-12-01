@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 24, 2025 at 08:44 PM
+-- Generation Time: Dec 01, 2025 at 11:04 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.14
 
@@ -35,16 +35,6 @@ CREATE TABLE `cart` (
   `quantity` int NOT NULL DEFAULT '1',
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `product_id`, `size`, `quantity`, `created_at`) VALUES
-(5, 3, 15, 'M', 1, '2025-11-23 03:01:06'),
-(12, 3, 1, 'S', 1, '2025-11-24 15:49:41'),
-(13, 3, 3, 'S', 1, '2025-11-24 15:49:58'),
-(16, 3, 1, 'L', 1, '2025-11-24 15:54:01');
 
 -- --------------------------------------------------------
 
@@ -79,7 +69,18 @@ INSERT INTO `orders` (`id`, `user_id`, `total`, `status`, `created_at`, `fullnam
 (5, 2, 79.90, 'Plătită', '2025-11-23 16:07:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 2, 39.90, 'Plătită', '2025-11-24 15:50:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 2, 99.90, 'Plătită', '2025-11-24 15:53:14', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 2, 39.90, 'Plătită', '2025-11-24 17:19:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(8, 2, 39.90, 'Plătită', '2025-11-24 17:19:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 2, 39.90, 'Plătită', '2025-11-25 11:00:19', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 3, 339.40, 'Plătită', '2025-11-25 12:01:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 2, 99.90, 'Plătită', '2025-11-25 12:05:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 2, 39.90, 'Plătită', '2025-11-25 12:10:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 2, 99.90, 'Plătită', '2025-11-25 12:12:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 2, 59.90, 'Plătită', '2025-11-25 12:14:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 2, 39.90, 'Plătită', '2025-11-25 12:18:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 2, 39.90, 'Plătită', '2025-11-25 12:22:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 2, 39.90, 'Plătită', '2025-11-25 12:32:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 2, 39.90, 'Plătită', '2025-11-26 17:20:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 2, 39.90, 'Plătită', '2025-11-26 17:20:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,22 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `size`, `quantity`, `
 (7, 5, 6, 'XL', 1, 79.90),
 (8, 6, 1, 'M', 1, 39.90),
 (9, 7, 2, 'S', 1, 99.90),
-(10, 8, 1, 'M', 1, 39.90);
+(10, 8, 1, 'M', 1, 39.90),
+(11, 9, 1, 'L', 1, 39.90),
+(12, 10, 15, 'M', 1, 119.90),
+(13, 10, 1, 'S', 1, 39.90),
+(14, 10, 3, 'S', 1, 59.90),
+(15, 10, 1, 'L', 2, 39.90),
+(16, 10, 1, 'M', 1, 39.90),
+(17, 11, 2, 'M', 1, 99.90),
+(18, 12, 1, 'L', 1, 39.90),
+(19, 13, 2, 'M', 1, 99.90),
+(20, 14, 3, 'S', 1, 59.90),
+(21, 15, 1, 'L', 1, 39.90),
+(22, 16, 1, 'L', 1, 39.90),
+(23, 17, 1, 'L', 1, 39.90),
+(24, 18, 1, 'L', 1, 39.90),
+(25, 19, 1, 'L', 1, 39.90);
 
 -- --------------------------------------------------------
 
@@ -252,10 +268,10 @@ INSERT INTO `product_sizes` (`id`, `product_id`, `size`) VALUES
 (81, 16, 'M'),
 (82, 16, 'L'),
 (83, 16, 'XL'),
-(84, 1, 'XS'),
-(85, 1, 'M'),
-(86, 1, 'L'),
-(87, 1, 'XL');
+(95, 1, 'XS'),
+(96, 1, 'M'),
+(97, 1, 'L'),
+(98, 1, 'XL');
 
 -- --------------------------------------------------------
 
@@ -310,7 +326,8 @@ ALTER TABLE `order_items`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `code` (`code`);
 
 --
 -- Indexes for table `product_sizes`
@@ -335,31 +352,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `product_sizes`
 --
 ALTER TABLE `product_sizes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `users`

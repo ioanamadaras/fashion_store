@@ -27,6 +27,7 @@ $sizes = $stmt->fetchAll(PDO::FETCH_COLUMN);
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title><?php echo $product['name']; ?> - Fashion Store</title>
 
