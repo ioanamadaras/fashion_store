@@ -245,10 +245,6 @@ body {
   transition: 0.3s ease;
 }
 
-.checkout-btn:hover {
-  background: #e73372;
-}
-
 /* ================================
    RESPONSIVE
 ================================= */
