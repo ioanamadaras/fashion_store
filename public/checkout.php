@@ -45,6 +45,10 @@ foreach ($cart_items as $item) {
     <meta charset="UTF-8">
     <title>Checkout - Fashion Store</title>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fed496b (local changes before rebase)
 </head>
 <body>
 
