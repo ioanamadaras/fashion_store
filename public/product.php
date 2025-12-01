@@ -22,6 +22,7 @@ if (!$product) {
 $stmt = $pdo->prepare("SELECT size FROM product_sizes WHERE product_id = ?");
 $stmt->execute([$id]);
 $sizes = $stmt->fetchAll(PDO::FETCH_COLUMN);
+$areThereSizes = !empty($sizes);
 ?>
 
 <!DOCTYPE html>
@@ -55,20 +56,24 @@ $sizes = $stmt->fetchAll(PDO::FETCH_COLUMN);
             <?php echo nl2br($product['descriere']); ?>
         </p>
 
-        <h3 class="size-label">Alege mărimea:</h3>
+        <?php if (!$areThereSizes): ?>
+            <p class="product-meta" style="color: red;">Nu sunt disponibile mărimi pentru acest produs.</p>
+        <?php else: ?>
+            <h3 class="size-label">Alege mărimea:</h3>
 
-        <form action="../backend/cart/add.php" method="POST">
-            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+            <form action="../backend/cart/add.php" method="POST">
+                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
 
-            <select name="size" required class="size-select">
-                <option value="">Selectează</option>
-                <?php foreach ($sizes as $s): ?>
-                    <option value="<?php echo $s; ?>"><?php echo $s; ?></option>
-                <?php endforeach; ?>
-            </select>
+                <select name="size" required class="size-select">
+                    <option value="">Selectează</option>
+                    <?php foreach ($sizes as $s): ?>
+                        <option value="<?php echo $s; ?>"><?php echo $s; ?></option>
+                    <?php endforeach; ?>
+                </select>
 
-            <button type="submit" class="add-to-cart-btn">Adaugă în coș</button>
-        </form>
+                <button type="submit" class="add-to-cart-btn">Adaugă în coș</button>
+            </form>
+        <?php endif; ?>
 
     </div>
 </div>

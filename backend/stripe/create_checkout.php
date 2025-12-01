@@ -56,9 +56,10 @@ foreach ($items as $item) {
 }
 
 // 3. Creăm sesiunea de checkout
+//stripe pregateste pagina reala de plata unde userul va introduce datele cardului
 $session = \Stripe\Checkout\Session::create([
     "payment_method_types" => ["card"],
-    "line_items" => $line_items,
+    "line_items" => $line_items, //trimitem produsele din cos catre stripe
     "mode" => "payment",
     "success_url" => "http://localhost/fashion_store/public/succes.php",
     "cancel_url" => "http://localhost/fashion_store/public/cart.php"

@@ -36,10 +36,20 @@ foreach ($items as $item) {
 
 // Inserăm comanda în tabela `orders`
 $stmt = $pdo->prepare("
-    INSERT INTO orders (user_id, total, status, created_at)
-    VALUES (?, ?, 'Plătită', NOW())
+    INSERT INTO orders (user_id, total, status, created_at, fullname, email, phone, country, city, street, zipcode)
+    VALUES (?, ?, 'Plătită', NOW(), ?, ?, ?, ?, ?, ?, ?)
 ");
-$stmt->execute([$user_id, $total]);
+$stmt->execute([
+    $user_id, 
+    $total,
+    $_SESSION["checkout_data"]["fullname"],
+    $_SESSION["checkout_data"]["email"],
+    $_SESSION["checkout_data"]["phone"],
+    $_SESSION["checkout_data"]["country"],
+    $_SESSION["checkout_data"]["city"],
+    $_SESSION["checkout_data"]["street"],
+    $_SESSION["checkout_data"]["postal"]
+]);
 
 $order_id = $pdo->lastInsertId();
 

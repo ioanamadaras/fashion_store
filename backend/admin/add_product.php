@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_POST["gender"]
         ]);
 
-        // 2. ID produs
+        // 2. Luăm ID-ul noului produs
         $product_id = $pdo->lastInsertId();
 
         // 3. Inserăm mărimile dacă există
@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
+        // 4. Redirecționăm înapoi la lista de produse
         header("Location: ../../public/admin/list.php");
         exit;
 

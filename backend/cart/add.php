@@ -2,6 +2,7 @@
 session_start();
 require_once "../config/db_connect.php";
 
+// Preluăm datele din formular
 $product_id = $_POST["product_id"] ?? null;
 $size       = $_POST["size"] ?? null;
 $user_id    = $_SESSION["user_id"] ?? null;

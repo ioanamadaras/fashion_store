@@ -366,6 +366,11 @@ body {
   border: #000 1px solid;
 }
 
+.product-grid a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .product-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -927,8 +932,8 @@ body {
   max-width: 1300px;
   margin: 30px auto 70px auto;
   background: white;
-  padding: 25px;
   border-radius: 18px;
+  overflow: hidden;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
 }
 
@@ -936,6 +941,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
+  border: 1px solid #ddd;
 }
 
 .admin-table th {
@@ -946,9 +952,15 @@ body {
 }
 
 .admin-table td {
-  padding: 14px;
+  padding: 8px;
   border-bottom: 1px solid #eee;
   text-align: center;
+}
+
+.admin-table {
+  th, td, table {
+    border: 1px solid #ddd;
+  }
 }
 
 .admin-table img {

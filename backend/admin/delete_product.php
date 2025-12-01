@@ -8,11 +8,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// 1. Stergi mai intai marimile asociate produsului
-$stmt = $pdo->prepare("DELETE FROM product_sizes WHERE product_id = ?");
-$stmt->execute([$id]);
 
-// 2. Apoi stergi produsul
 $stmt = $pdo->prepare("DELETE FROM products WHERE id = ?");
 $stmt->execute([$id]);
 

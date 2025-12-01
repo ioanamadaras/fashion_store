@@ -57,20 +57,20 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="product-grid">
     <?php foreach ($products as $p): ?>
-        <div class="product-card">
-            <img src="assets/images/<?php echo $p['image']; ?>" alt="Produs">
-            <div class="product-info">
-                <a href="product.php?id=<?php echo $p['id']; ?>">
-                    <?php echo $p['name']; ?>
-                </a>
-                <div class="product-price">
-                    <?php echo $p['price']; ?> lei
-                </div>
-                <div class="product-category">
-                    <?php echo $p['categorie']; ?> • <?php echo $p['gender']; ?>
+        <a href="product.php?id=<?php echo $p['id']; ?>">
+            <div class="product-card">
+                <img src="assets/images/<?php echo $p['image']; ?>" alt="Produs">
+                <div class="product-info">
+                    <h4><?php echo $p['name']; ?></h4>
+                    <div class="product-price">
+                        <?php echo $p['price']; ?> lei
+                    </div>
+                    <div class="product-category">
+                        <?php echo $p['categorie']; ?> • <?php echo $p['gender']; ?>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     <?php endforeach; ?>
 </div>
 

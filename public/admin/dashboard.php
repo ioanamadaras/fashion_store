@@ -12,7 +12,7 @@
 <h1 class="home-title">Panou Administrativ</h1>
 
 <div class="user-box">
-    Ești conectată ca: 
+    Ești conectat(ă) ca: 
     <strong><?php echo $_SESSION["username"]; ?></strong>
 </div>
 

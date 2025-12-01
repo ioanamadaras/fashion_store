@@ -8,24 +8,23 @@ require __DIR__ . '/PHPMailer/src/Exception.php';
 
 function sendOrderEmail($toEmail, $toName, $orderId, $total)
 {
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer(true); //TRUE activează excepțiile
 
     try {
-        // SMTP
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'ioanamadaras2000@gmail.com';
-        $mail->Password   = 'qire eank opmw wlnj';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        // configurare SMTP
+        $mail->isSMTP(); // Setează mailer-ul să folosească SMTP
+        $mail->Host       = 'smtp.gmail.com'; // Setează serverul SMTP
+        $mail->SMTPAuth   = true; // Activează autentificarea SMTP
+        $mail->Username   = 'ioanamadaras2000@gmail.com'; // Numele de utilizator SMTP
+        $mail->Password   = 'qire eank opmw wlnj'; // Parola SMTP
+        $mail->SMTPSecure = 'tls'; // Criptare TLS
+        $mail->Port       = 587; // Portul SMTP
 
+        //setări email
         // Expeditor
         $mail->setFrom('ioanamadaras2000@gmail.com', 'Fashion Store');
-
         // Destinatar
         $mail->addAddress($toEmail, $toName);
-
         // Conținut
         $mail->isHTML(true);
         $mail->Subject = "Confirmare comanda #$orderId";
