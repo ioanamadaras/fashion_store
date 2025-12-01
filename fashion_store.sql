@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 01, 2025 at 11:04 AM
+-- Generation Time: Dec 01, 2025 at 08:39 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.14
 
@@ -80,7 +80,14 @@ INSERT INTO `orders` (`id`, `user_id`, `total`, `status`, `created_at`, `fullnam
 (16, 2, 39.90, 'Plătită', '2025-11-25 12:22:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17, 2, 39.90, 'Plătită', '2025-11-25 12:32:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (18, 2, 39.90, 'Plătită', '2025-11-26 17:20:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, 2, 39.90, 'Plătită', '2025-11-26 17:20:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(19, 2, 39.90, 'Plătită', '2025-11-26 17:20:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 2, 40.00, 'Plătită', '2025-12-01 14:29:14', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 2, 99.90, 'Plătită', '2025-12-01 14:30:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 2, 39.90, 'Plătită', '2025-12-01 16:42:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 2, 159.70, 'Plătită', '2025-12-01 21:42:05', 'Madaras Ioana', 'ioanamadaras2000@gmail.com', '0742146197', 'Romania', 'Cluj', 'Teodor Mihali 31-35', NULL),
+(24, 2, 99.90, 'Plătită', '2025-12-01 21:43:56', 'Madaras Ioana', 'ioanamadaras2000@gmail.com', '0742146197', 'Romania', 'Cluj', 'Teodor Mihali 31-35', '500455'),
+(25, 2, 40.00, 'Plătită', '2025-12-01 21:49:19', 'Madaras Ioana', 'ioanamadaras2000@gmail.com', '0742146197', 'Romania', 'Cluj', 'Teodor Mihali 31-35', '500455'),
+(26, 2, 39.90, 'Plătită', '2025-12-01 22:04:07', 'Madaras Ioana', 'ioanamadaras2000@gmail.com', '0742146197', 'Romania', 'Cluj', 'Teodor Mihali 31-35', '500455');
 
 -- --------------------------------------------------------
 
@@ -126,7 +133,14 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `size`, `quantity`, `
 (22, 16, 1, 'L', 1, 39.90),
 (23, 17, 1, 'L', 1, 39.90),
 (24, 18, 1, 'L', 1, 39.90),
-(25, 19, 1, 'L', 1, 39.90);
+(25, 19, 1, 'L', 1, 39.90),
+(27, 21, 2, 'M', 1, 99.90),
+(28, 22, 1, 'M', 1, 39.90),
+(29, 23, 12, 'L', 1, 79.90),
+(30, 23, 1, 'M', 1, 39.90),
+(31, 23, 1, 'XS', 1, 39.90),
+(32, 24, 2, 'S', 1, 99.90),
+(34, 26, 1, 'M', 1, 39.90);
 
 -- --------------------------------------------------------
 
@@ -166,12 +180,12 @@ INSERT INTO `products` (`id`, `name`, `code`, `image`, `price`, `descriere`, `ca
 (14, 'Cămașă clasică albă', 'M002', 'M002.jpg', 89.90, 'Cămașă slim', 'Cămăși', 'Barbati'),
 (15, 'Pantaloni bej', 'M003', 'M003.jpg', 119.90, 'Pantaloni casual', 'Pantaloni', 'Barbati'),
 (16, 'Hanorac simplu gri', 'M004', 'M004.jpg', 99.90, 'Hanorac lejer', 'Hanorace', 'Barbati'),
-(17, 'Pulover bleu', 'M005', 'M005.jpg', 79.90, 'Pulover subțire', 'Pulovere', 'Barbati'),
 (18, 'Geacă neagră', 'M006', 'M006.jpg', 199.90, 'Geacă ', 'Jachete', 'Barbati'),
 (19, 'Blugi slim fit', 'M007', 'M007.jpg', 149.90, 'Blugi slim', 'Pantaloni', 'Barbati'),
 (20, 'Sacou bleumarin', 'M008', 'M008.jpg', 249.90, 'Sacou elegant', 'Sacouri', 'Barbati'),
 (21, 'Pantaloni scurți sport', 'M009', 'M009.jpg', 59.90, 'Short sport', 'Shorts', 'Barbati'),
-(22, 'Tricou polo alb', 'M010', 'M010.jpg', 69.90, 'Polo simplu', 'Tricouri', 'Barbati');
+(22, 'Tricou polo alb', 'M010', 'M010.jpg', 69.90, 'Polo simplu', 'Tricouri', 'Barbati'),
+(36, 'Top din tricot fin', 'Z0013k', 'z001.jpg', 40.00, 'fvfdcd', 'Tricouri', 'Femei');
 
 -- --------------------------------------------------------
 
@@ -260,9 +274,6 @@ INSERT INTO `product_sizes` (`id`, `product_id`, `size`) VALUES
 (73, 15, 'XS'),
 (74, 15, 'M'),
 (75, 15, 'L'),
-(76, 17, 'XS'),
-(77, 17, 'S'),
-(78, 17, 'M'),
 (79, 16, 'XS'),
 (80, 16, 'S'),
 (81, 16, 'M'),
@@ -319,8 +330,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `order_items_ibfk_2` (`product_id`),
+  ADD KEY `order_items_ibfk_1` (`order_id`);
 
 --
 -- Indexes for table `products`
@@ -334,7 +345,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_sizes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_sizes_ibfk_1` (`product_id`);
 
 --
 -- Indexes for table `users`
@@ -352,31 +363,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `product_sizes`
 --
 ALTER TABLE `product_sizes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -405,14 +416,14 @@ ALTER TABLE `orders`
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `product_sizes`
 --
 ALTER TABLE `product_sizes`
-  ADD CONSTRAINT `product_sizes_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `product_sizes_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
