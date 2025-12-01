@@ -21,7 +21,7 @@ $products = $gp->getAll();
 <h1 class="home-title">Administrare Produse</h1>
 
 <div class="admin-actions">
-    <a class="admin-btn" href="add.php">Adaugă produs</a>
+    <a class="admin-btn secondary" href="add.php">Adaugă produs</a>
     <a class="admin-btn secondary" href="dashboard.php">Înapoi la Dashboard</a>
 </div>
 

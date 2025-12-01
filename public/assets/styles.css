@@ -306,8 +306,8 @@ body {
   transition: 0.3s ease;
 }
 
-.user-links a:hover {
-  background: #a78bfa;
+.user-links a:hover, .admin-btn:hover {
+  background: #a78bfa !important;
 }
 
 /* Guest state */
@@ -957,7 +957,7 @@ body {
   text-align: center;
 }
 
-.admin-table {
+.admin-table, .cart-table {
   th, td, table {
     border: 1px solid #ddd;
   }
